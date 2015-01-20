@@ -2,7 +2,6 @@
   "name": "game-of-life",
   "version": "1.0.0",
   "description": "hobby project",
-  "start": "gulp"
   "main": "gulpfile.js",
   "dependencies": {
     "gulp": "^3.8.10",
@@ -12,6 +11,7 @@
   },
   "devDependencies": {},
   "scripts": {
+	"start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
