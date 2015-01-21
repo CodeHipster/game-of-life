@@ -4,20 +4,22 @@
 
 Goal: being able to draw pixels and start the game of life logic.
 
-Project is purely front-end canvas.
+Project is purely front-end.
 
 Working with:
 -------------
-  - coffee-script
-  - gulp (to watch and compile coffee-script)
-  - node/npm (to manage packages for gulp scripts)
+- requirejs
+- html5 canvas
+- coffee-script (spare your fingers by writing less ;-P )
+- gulp (to watch and compile coffee-script)
+- node/npm (to manage packages for gulp scripts)
 
 Project structure:
 ------------------
-  - root: project related files
-    - (git/node modules/gulp scripts/package.json)
-  - ./game of life
-    - source code for the webpage
+- root: project related files
+  - (git/node modules/gulp scripts/package.json)
+- ./game of life
+  - source code for the webpage
 
 First time setup:
 -----------------
