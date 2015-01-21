@@ -8,10 +8,17 @@ var paths = {
 	jsFiles: './game of life/scripts/'
 };
 
+//Function to swallor error, similar to gutil.log.
+function swallowError (error) {
+    //If you want details of the error in the console
+    console.log(error.toString());
+    this.emit('end');
+}
 // Compile coffee-script.
 gulp.task('coffee', function() {
   gulp.src(paths.coffeeFiles)
-    .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(coffee({bare: true}))
+	.on('error', swallowError)
     .pipe(gulp.dest(paths.jsFiles));
 });
 
