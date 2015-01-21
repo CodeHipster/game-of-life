@@ -17,7 +17,7 @@ Working with:
 Project structure:
 ------------------
 - root: project related files
-  - (git/node modules/gulp scripts/package.json)
+  - git/node modules/gulp script/npm package.json
 - ./game of life
   - source code for the webpage
 
