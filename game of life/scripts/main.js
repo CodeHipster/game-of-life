@@ -1,5 +1,13 @@
 console.log("main.coffee");
 
-require(function() {
-  return console.log("test");
+require.config({
+  paths: {
+    lodash: '../lib/lodash',
+    highland: '../lib/highland',
+    jquery: '../lib/jquery'
+  }
+});
+
+require(['init-page'], function(initPage) {
+  return initPage.setupPage();
 });
