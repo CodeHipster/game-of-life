@@ -33,4 +33,4 @@ gulp.task('open-webpage', function(){
   .pipe(open());
 });
 
-gulp.task('default', ['watch-coffee','coffee', 'open-webpage']);
+gulp.task('default', ['watch-coffee','coffee','open-webpage']);

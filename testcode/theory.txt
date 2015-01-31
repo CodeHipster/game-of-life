@@ -1,0 +1,10 @@
+Draw on canvas efficiently and in good quality. No wacky scaling done for us.
+
+http://www.html5rocks.com/en/tutorials/canvas/hidpi/
+https://fronteers.nl/congres/2012/sessions/a-pixel-is-not-a-pixel-peter-paul-koch
+
+devicePixelRatio = What this property allowed us to do was understand the ratio of how pixel values (which we call the logical pixel value) in - say - CSS would translate to the actual number of pixels the device would use when it came to rendering.
+
+webkitBackingStorePixelRatio
+
+This is actually usable, if you want to know how much of your website the user is currently viewing, query "window.innerWidth and "window.innerHeight."

@@ -1,5 +1,6 @@
 define(['jquery'], function(jquery) {
   var reloadScrollBars, unloadScrollBars;
+  console.log("init-page");
   reloadScrollBars = function() {
     document.documentElement.style.overflow = "auto";
     return document.body.scroll = "yes";

@@ -1,6 +1,3 @@
-console.log "main.coffee"
-
-
 # Set lib paths.
 require.config
 	paths:
@@ -8,5 +5,10 @@ require.config
 		highland: '../lib/highland',
 		jquery: '../lib/jquery'
 
-require ['init-page'], (initPage) ->
+require ['init-page','game-of-life'], (initPage,gameOfLife) ->
+	console.log "main"
 	initPage.setupPage()
+	console.log gameOfLife
+	gameOfLife.setupAndRun()
+	
+	

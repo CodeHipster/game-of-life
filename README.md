@@ -10,9 +10,9 @@ Working with:
 -------------
 - requirejs
 - html5 canvas
-- coffee-script (spare your fingers by writing less ;-P )
-- gulp (to watch and compile coffee-script)
-- node/npm (to manage packages for gulp scripts)
+- coffee-script (Spare your fingers by writing less ;-P )
+- gulp (to watch and compile coffee-script. I know I can just use the coffee command, but wanted to try gulp.)
+- node/npm (To manage packages for gulp scripts.)
 
 Project structure:
 ------------------

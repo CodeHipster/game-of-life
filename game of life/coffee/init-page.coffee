@@ -1,4 +1,5 @@
 define ['jquery'], (jquery)->
+	console.log "init-page"
 
 	reloadScrollBars = () ->
 		document.documentElement.style.overflow = "auto";  # firefox, chrome
@@ -12,7 +13,8 @@ define ['jquery'], (jquery)->
 		console.log "Setting up page."
 		#full screen canvas.
 		# Overwrite the default margin.
-		jquery("body").css("margin",0);
+		jquery "body"
+			.css "margin",0
 		canvas = document.getElementById "canvas"
 		# set the canvas width and height.
 		canvas.width = window.innerWidth
@@ -28,4 +30,4 @@ define ['jquery'], (jquery)->
 			context.lineWidth	= 1
 			context.font		= "16px Arial"
 		else 
-			throw new Error("canvas context unavailable");
+			throw new Error "canvas context unavailable"
