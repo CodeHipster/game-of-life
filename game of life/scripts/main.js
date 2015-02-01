@@ -6,9 +6,8 @@ require.config({
   }
 });
 
-require(['init-page', 'game-of-life'], function(initPage, gameOfLife) {
+require(['init-page', 'game-controller'], function(initPage, gameController) {
   console.log("main");
   initPage.setupPage();
-  console.log(gameOfLife);
-  return gameOfLife.setupAndRun();
+  return gameController.setupAndRun();
 });

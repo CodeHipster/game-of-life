@@ -5,10 +5,9 @@ require.config
 		highland: '../lib/highland',
 		jquery: '../lib/jquery'
 
-require ['init-page','game-of-life'], (initPage,gameOfLife) ->
+require ['init-page','game-controller'], (initPage,gameController) ->
 	console.log "main"
 	initPage.setupPage()
-	console.log gameOfLife
-	gameOfLife.setupAndRun()
-	
+	gameController.setupAndRun()
+
 	
