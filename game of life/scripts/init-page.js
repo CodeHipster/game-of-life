@@ -1,6 +1,7 @@
 define(['jquery'], function(jquery) {
-  var reloadScrollBars, unloadScrollBars;
-  console.log("init-page");
+  var moduleName, reloadScrollBars, unloadScrollBars;
+  moduleName = "init-page";
+  console.log(moduleName);
   reloadScrollBars = function() {
     document.documentElement.style.overflow = "auto";
     return document.body.scroll = "yes";
@@ -12,7 +13,7 @@ define(['jquery'], function(jquery) {
   return {
     setupPage: function() {
       var canvas, context;
-      console.log("Setting up page.");
+      console.log(moduleName, "Setting up page.");
       jquery("body").css("margin", 0);
       canvas = document.getElementById("canvas");
       canvas.width = window.innerWidth;

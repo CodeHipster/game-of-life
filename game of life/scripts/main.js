@@ -7,7 +7,9 @@ require.config({
 });
 
 require(['init-page', 'game-controller'], function(initPage, gameController) {
-  console.log("main");
+  var moduleName;
+  moduleName = "main";
+  console.log(moduleName);
   initPage.setupPage();
   return gameController.setupAndRun();
 });

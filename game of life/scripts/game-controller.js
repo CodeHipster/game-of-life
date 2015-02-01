@@ -1,16 +1,21 @@
 define(['grid-tools', 'game-of-life'], function(gridTools, GameOfLife) {
-  var moduleName;
+  var gameController, moduleName;
   moduleName = "game-controller";
-  return console.log(moduleName);
-});
-
-({
-  todo: give(each(module(a(name && append(it(to(the(logging.gameController = {
+  console.log(moduleName);
+  return gameController = {
     setupAndRun: function() {
       var grid;
-      console.log("setup and run");
+      console.log(moduleName, "setup and run");
       grid = gridTools.getEmptyGrid(3, 3);
-      return GameOfLife.doLogic(grid);
+      grid[0][0] = true;
+      grid[2][0] = true;
+      grid[0][1] = true;
+      grid[1][1] = true;
+      console.log(moduleName, "grid:", grid);
+      grid = GameOfLife.doLogic(grid);
+      console.log(moduleName, "grid:", grid);
+      grid = GameOfLife.doLogic(grid);
+      return console.log(moduleName, "grid:", grid);
     }
-  }))))))))
+  };
 });

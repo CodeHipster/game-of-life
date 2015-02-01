@@ -16,11 +16,12 @@ neighbours:
 [5][6][7]
  */
 define(['grid-tools'], function(gridTools) {
-  var gameOfLife, getCountLivingNeighbours;
-  console.log("game-of-life");
+  var gameOfLife, getCountLivingNeighbours, moduleName;
+  moduleName = "game-of-life";
+  console.log(moduleName);
   getCountLivingNeighbours = function(neighbours) {
     var count;
-    console.log("getting count of living neighbours");
+    console.log(moduleName, "getting count of living neighbours");
     count = 0;
     neighbours.forEach(function(n) {
       if (n === true) {
@@ -31,24 +32,36 @@ define(['grid-tools'], function(gridTools) {
   };
   return gameOfLife = {
     doLogic: function(grid) {
-      var cell, column, nrNeighbours, x, y, _i, _len, _results;
-      console.log("doing logic.");
-      _results = [];
+      var cell, column, newGrid, nrNeighbours, x, y, _i, _j, _len, _len1;
+      console.log(moduleName, "doing logic. on grid:", grid);
+      newGrid = gridTools.getEmptyGrid(grid.length, grid[0].length);
       for (x = _i = 0, _len = grid.length; _i < _len; x = ++_i) {
         column = grid[x];
-        _results.push((function() {
-          var _j, _len1, _results1;
-          _results1 = [];
-          for (y = _j = 0, _len1 = column.length; _j < _len1; y = ++_j) {
-            cell = column[y];
-            console.log("logic for x: " + x + " y: " + y);
-            nrNeighbours = getCountLivingNeighbours(gridTools.getNeighbours(grid, x, y));
-            _results1.push(console.log("live neighbours: " + nrNeighbours));
+        for (y = _j = 0, _len1 = column.length; _j < _len1; y = ++_j) {
+          cell = column[y];
+          console.log(moduleName, "logic for x: " + x + " y: " + y);
+          nrNeighbours = getCountLivingNeighbours(gridTools.getNeighbours(grid, x, y));
+          console.log(moduleName, "live neighbours: " + nrNeighbours);
+          if (grid[x][y]) {
+            if (nrNeighbours < 2) {
+              newGrid[x][y] = false;
+              console.log(moduleName, "cell dies");
+            } else if (nrNeighbours > 3) {
+              newGrid[x][y] = false;
+              console.log(moduleName, "cell dies");
+            } else {
+              newGrid[x][y] = true;
+              console.log(moduleName, "cell stays alive");
+            }
+          } else {
+            if (nrNeighbours === 3) {
+              newGrid[x][y] = true;
+              console.log(moduleName, "cell revives");
+            }
           }
-          return _results1;
-        })());
+        }
       }
-      return _results;
+      return newGrid;
     }
   };
 });

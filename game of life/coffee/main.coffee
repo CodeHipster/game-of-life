@@ -6,8 +6,8 @@ require.config
 		jquery: '../lib/jquery'
 
 require ['init-page','game-controller'], (initPage,gameController) ->
-	console.log "main"
+	moduleName = "main"
+	console.log moduleName
+
 	initPage.setupPage()
 	gameController.setupAndRun()
-
-	

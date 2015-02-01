@@ -1,16 +1,17 @@
 define ['jquery'], (jquery)->
-	console.log "init-page"
+	moduleName = "init-page"
+	console.log moduleName
 
 	reloadScrollBars = () ->
 		document.documentElement.style.overflow = "auto";  # firefox, chrome
 		document.body.scroll = "yes"; # ie only
-		
+
 	unloadScrollBars = () ->
 		document.documentElement.style.overflow = "hidden";  # firefox, chrome
 		document.body.scroll = "no"; # ie only
 
 	return setupPage: ()->
-		console.log "Setting up page."
+		console.log moduleName, "Setting up page."
 		#full screen canvas.
 		# Overwrite the default margin.
 		jquery "body"
@@ -18,16 +19,16 @@ define ['jquery'], (jquery)->
 		canvas = document.getElementById "canvas"
 		# set the canvas width and height.
 		canvas.width = window.innerWidth
-		canvas.height = window.innerHeight 
-		
+		canvas.height = window.innerHeight
+
 		# Remove the scrollbars.
 		unloadScrollBars()
-		
-		if canvas.getContext 
+
+		if canvas.getContext
 			context = canvas.getContext '2d'
 			context.fillStyle	= '#00ff00'
 			context.strokeStyle	= '#ff0000'
 			context.lineWidth	= 1
 			context.font		= "16px Arial"
-		else 
+		else
 			throw new Error "canvas context unavailable"
