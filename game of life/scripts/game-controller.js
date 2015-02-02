@@ -6,19 +6,22 @@ define(['grid-tools', 'game-of-life', 'grid-visualizer', 'jquery'], function(gri
     setupAndRun: function() {
       var canvas, grid, lifeloop;
       console.log(moduleName, "setup and run");
-      grid = gridTools.getEmptyGrid(3, 3);
-      canvas = jquery('#canvas');
+      grid = gridTools.getEmptyGrid(50, 50);
+      canvas = jquery('#canvas')[0];
       console.log(moduleName, canvas);
-      grid[0][0] = true;
       grid[2][0] = true;
       grid[0][1] = true;
-      grid[1][1] = true;
+      grid[2][1] = true;
+      grid[1][2] = true;
+      grid[2][2] = true;
       console.log(moduleName, "starting grid:", grid);
-      return lifeloop = function(timeStamp) {
+      lifeloop = function() {
         grid = GameOfLife.doLogic(grid);
         console.log(moduleName, "grid:", grid);
-        return gridVisualizer.render(grid, canvas);
+        gridVisualizer.render(grid, canvas);
+        return requestAnimationFrame(lifeloop);
       };
+      return requestAnimationFrame(lifeloop);
     }
   };
 });
