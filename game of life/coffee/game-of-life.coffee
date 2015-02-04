@@ -19,7 +19,7 @@ define ['grid-tools'], (gridTools) ->
 	console.log moduleName
 
 	getCountLivingNeighbours = (neighbours) ->
-		console.log moduleName, "getting count of living neighbours"
+		#console.log moduleName, "getting count of living neighbours"
 		count = 0
 		neighbours.forEach (n) ->
 			count = count + 1 if n is true
@@ -28,31 +28,31 @@ define ['grid-tools'], (gridTools) ->
 	gameOfLife =
 		#expects a 2 dimensional array with boolean values. With true representing a living cell.
 		doLogic: (grid) ->
-			console.log moduleName, "doing logic. on grid:", grid
+			#console.log moduleName, "doing logic. on grid:", grid
 			# newGrid will contain the new state of the grid.
 			# We don't want to change the grid as that will break the logic.
 			newGrid = gridTools.getEmptyGrid grid.length, grid[0].length
 			for column, x in grid
 				for cell, y in column
-					console.log moduleName, "logic for x: #{x} y: #{y}"
+					#console.log moduleName, "logic for x: #{x} y: #{y}"
 					nrNeighbours = getCountLivingNeighbours (gridTools.getNeighbours grid, x, y)
-					console.log moduleName, "live neighbours: #{nrNeighbours}"
+					#console.log moduleName, "live neighbours: #{nrNeighbours}"
 					if grid[x][y] # If cell is alive.
 						# If cell has less then 2 neighbours it does from loneliness.
 						if nrNeighbours < 2
 							newGrid[x][y] = false
-							console.log moduleName, "cell dies"
-						# If cell has more then 2 neighbours it dies from over population.
+							#console.log moduleName, "cell dies"
+						# If cell has more then 3 neighbours it dies from over population.
 						else if nrNeighbours > 3
 							newGrid[x][y] = false
-							console.log moduleName, "cell dies"
+							#console.log moduleName, "cell dies"
 						# Implicit, when 2 or 3 it stayes alive.
 						else
 							newGrid[x][y] = true
-							console.log moduleName, "cell stays alive"
+							#console.log moduleName, "cell stays alive"
 					else # Cell is dead.
 						# If 3 living neighbours, cell is revived.
 						if nrNeighbours is 3
 							newGrid[x][y] = true
-							console.log moduleName, "cell revives"
+							#console.log moduleName, "cell revives"
 			return newGrid

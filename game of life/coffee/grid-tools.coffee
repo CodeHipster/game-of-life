@@ -36,7 +36,7 @@ define ['jquery'], (jquery) ->
 		[5][6][7]
 		###
 		getNeighbours: (grid, x, y) ->
-			console.log moduleName, "getNeighbours x:#{x} y:#{y} \n\tgrid:", grid
+			#console.log moduleName, "getNeighbours x:#{x} y:#{y} \n\tgrid:", grid
 			neighbours = 	[
 											grid[x - 1]?[y - 1],
 											grid[x]?[y - 1],
@@ -48,15 +48,15 @@ define ['jquery'], (jquery) ->
 											grid[x + 1]?[y + 1]
 										]
 			if isEdgeOfGrid grid, x, y
-				console.log moduleName, "on edge of grid x:#{x}, y:#{y} \n\tchecking for undefined in ", neighbours
+				#console.log moduleName, "on edge of grid x:#{x}, y:#{y} \n\tchecking for undefined in ", neighbours
 				for n, index in neighbours
 					neighbours[index] = false if n is undefined
-				console.log moduleName, "neighbours: ", neighbours
+				#console.log moduleName, "neighbours: ", neighbours
 			return neighbours
 
 		#useless function?
 		setNeighbours: (grid, neighbours, x, y) ->
-			console.log moduleName, "setNeighbours"
+			#console.log moduleName, "setNeighbours"
 			#If we are on the edge of the grid we do not want to set the values :)
 			#We can use the javascript array to see if we get undefined values.
 			#Set these undefined values on the original neighbours array.

@@ -1,4 +1,4 @@
-define ['jquery'], (jquery)->
+define ['jquery','canvas'], (jquery,canvas)->
 	moduleName = "init-page"
 	console.log moduleName
 
@@ -10,25 +10,18 @@ define ['jquery'], (jquery)->
 		document.documentElement.style.overflow = "hidden";  # firefox, chrome
 		document.body.scroll = "no"; # ie only
 
-	return setupPage: ()->
-		console.log moduleName, "Setting up page."
-		#full screen canvas.
-		# Overwrite the default margin.
-		jquery "body"
-			.css "margin",0
-		canvas = document.getElementById "canvas"
-		# set the canvas width and height.
-		canvas.width = window.innerWidth
-		canvas.height = window.innerHeight
+	initPage =
+		setupPage: ()->
+			console.log moduleName, "Setting up page."
+			#full screen canvas.
+			# Overwrite the default margin.
+			jquery "body"
+				.css "margin",0
+			# set the canvas width and height.
+			canvas.width = window.innerWidth
+			canvas.height = window.innerHeight
 
-		# Remove the scrollbars.
-		unloadScrollBars()
+			# Remove the scrollbars.
+			unloadScrollBars()
 
-		if canvas.getContext
-			context = canvas.getContext '2d'
-			context.fillStyle	= '#00ff00'
-			context.strokeStyle	= '#ff0000'
-			context.lineWidth	= 1
-			context.font		= "16px Arial"
-		else
-			throw new Error "canvas context unavailable"
+	return initPage
