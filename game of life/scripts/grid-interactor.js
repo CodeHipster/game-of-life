@@ -14,7 +14,7 @@ define(['grid', 'canvas', 'grid-visualizer'], function(grid, canvas, visualizer)
       tileSize = visualizer.tileSize;
       x = Math.floor(event.x / tileSize);
       y = Math.floor(event.y / tileSize);
-      return grid.grid[x][y] = !grid.grid[x][y];
+      return grid.front[x][y] = !grid.front[x][y];
     }
   };
   canvas.addEventListener('click', interactor.onClick, false);

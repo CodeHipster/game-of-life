@@ -31,29 +31,30 @@ define(['grid-tools'], function(gridTools) {
   };
   return gameOfLife = {
     doLogic: function(grid) {
-      var cell, column, newGrid, nrNeighbours, x, y, _i, _j, _len, _len1;
-      newGrid = gridTools.getEmptyGrid(grid.length, grid[0].length);
-      for (x = _i = 0, _len = grid.length; _i < _len; x = ++_i) {
-        column = grid[x];
+      var cell, column, nrNeighbours, x, y, _i, _j, _len, _len1, _ref;
+      gridTools.clean(grid.back);
+      _ref = grid.front;
+      for (x = _i = 0, _len = _ref.length; _i < _len; x = ++_i) {
+        column = _ref[x];
         for (y = _j = 0, _len1 = column.length; _j < _len1; y = ++_j) {
           cell = column[y];
-          nrNeighbours = gridTools.getNrOfNeighbours(grid, x, y);
-          if (grid[x][y]) {
+          nrNeighbours = gridTools.getNrOfNeighbours(grid.front, x, y);
+          if (cell) {
             if (nrNeighbours < 2) {
-              newGrid[x][y] = false;
+              grid.back[x][y] = false;
             } else if (nrNeighbours > 3) {
-              newGrid[x][y] = false;
+              grid.back[x][y] = false;
             } else {
-              newGrid[x][y] = true;
+              grid.back[x][y] = true;
             }
           } else {
             if (nrNeighbours === 3) {
-              newGrid[x][y] = true;
+              grid.back[x][y] = true;
             }
           }
         }
       }
-      return newGrid;
+      return gridTools.swap(grid);
     }
   };
 });

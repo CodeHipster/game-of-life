@@ -32,12 +32,12 @@ define(['grid-tools', 'jquery', 'canvas', 'grid'], function(gridTools, jquery, c
   };
   ctx = canvas.getContext("2d");
   visualizer.context = ctx;
-  gridRatio = grid.grid.length / grid.grid[0].length;
+  gridRatio = grid.front.length / grid.front[0].length;
   canvasRatio = canvas.width / canvas.height;
   if (canvasRatio > gridRatio) {
-    tileSize = canvas.height / grid.grid[0].length;
+    tileSize = canvas.height / grid.front[0].length;
   } else {
-    tileSize = canvas.width / grid.grid.length;
+    tileSize = canvas.width / grid.front.length;
   }
   console.log(tileSize, canvas.width, canvas.height);
   visualizer.tileSize = tileSize;

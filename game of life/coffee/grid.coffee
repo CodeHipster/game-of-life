@@ -6,14 +6,16 @@ prerequisists: depends on canvas for calculating tileSize
 
 #TODO: give grid a backbuffer
 
-define ['grid-tools'], (gridTools) ->
+define ['grid-tools','lodash'], (gridTools, _) ->
   moduleName = "grid"
   console.log moduleName
 
   grid =
-    grid: null
+    front: null
+    back: null
 
   # default value.
-  grid.grid = gridTools.getEmptyGrid 10,10
+  grid.front = gridTools.getEmptyGrid 5,5
+  grid.back = _.cloneDeep grid.front
 
   return grid

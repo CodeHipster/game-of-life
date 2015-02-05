@@ -16,7 +16,8 @@ define ['grid','canvas','grid-visualizer'], (grid,canvas,visualizer) ->
       tileSize = visualizer.tileSize
       x = Math.floor(event.x / tileSize)
       y = Math.floor(event.y / tileSize)
-      grid.grid[x][y] = !grid.grid[x][y]
+      #TODO: check if x and y are within grid :)
+      grid.front[x][y] = !grid.front[x][y]
 
   canvas.addEventListener 'click', interactor.onClick, false
 

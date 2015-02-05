@@ -2,13 +2,15 @@
 /*
 prerequisists: depends on canvas for calculating tileSize
  */
-define(['grid-tools'], function(gridTools) {
+define(['grid-tools', 'lodash'], function(gridTools, _) {
   var grid, moduleName;
   moduleName = "grid";
   console.log(moduleName);
   grid = {
-    grid: null
+    front: null,
+    back: null
   };
-  grid.grid = gridTools.getEmptyGrid(10, 10);
+  grid.front = gridTools.getEmptyGrid(5, 5);
+  grid.back = _.cloneDeep(grid.front);
   return grid;
 });

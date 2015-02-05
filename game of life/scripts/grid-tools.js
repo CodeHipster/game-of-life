@@ -8,6 +8,20 @@ define(['jquery'], function(jquery) {
     }
   };
   gridTools = {
+    clean: function(grid) {
+      grid.forEach(function(column) {
+        return column.forEach(function(cell, i) {
+          return column[i] = false;
+        });
+      });
+      return grid;
+    },
+    swap: function(grid) {
+      var temp;
+      temp = grid.front;
+      grid.front = grid.back;
+      return grid.back = temp;
+    },
     getEmptyGrid: function(width, height) {
       var grid, x, y, _i, _j, _ref, _ref1;
       grid = [];

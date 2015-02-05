@@ -41,14 +41,14 @@ define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid
   visualizer.context = ctx
 
   # eventually we want to have it scrollable, but for now just squeeze the grid onto the screen
-  gridRatio = grid.grid.length / grid.grid[0].length
+  gridRatio = grid.front.length / grid.front[0].length
   canvasRatio = canvas.width / canvas.height
   if canvasRatio > gridRatio # we want to scale the grid height to match the canvas.height
     #console.log moduleName, "canvas relative width is greater than grid relative width"
-    tileSize = canvas.height / grid.grid[0].length
+    tileSize = canvas.height / grid.front[0].length
   else
     #console.log moduleName, "canvas relative width is smaller than grid relative width"
-    tileSize = canvas.width / grid.grid.length
+    tileSize = canvas.width / grid.front.length
 
   console.log tileSize, canvas.width, canvas.height
   visualizer.tileSize = tileSize

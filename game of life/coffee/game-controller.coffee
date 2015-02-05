@@ -13,18 +13,18 @@ define ['grid','game-of-life','grid-visualizer','grid-interactor','timer']
       #[x][x][o]
       #[o][x][o]
       #[x][o][o]
-      grid.grid[2][0] = true
-      grid.grid[0][1] = true
-      grid.grid[2][1] = true
-      grid.grid[1][2] = true
-      grid.grid[2][2] = true
+      grid.front[2][0] = true
+      grid.front[0][1] = true
+      grid.front[2][1] = true
+      grid.front[1][2] = true
+      grid.front[2][2] = true
 
-      console.log moduleName, "starting grid:", grid
+      console.log moduleName, "starting grid:", grid.front
 
       lifeloop = () ->
+        #console.log moduleName, "grid:", grid.front
+        gridVisualizer.render grid.front, canvas
         # Run game of life logic once on the grid.
-        grid.grid = GameOfLife.doLogic grid.grid
-        #console.log moduleName, "grid:", grid.grid
-        gridVisualizer.render grid.grid, canvas
+        GameOfLife.doLogic grid
 
       timer.runAtInterval 200, lifeloop

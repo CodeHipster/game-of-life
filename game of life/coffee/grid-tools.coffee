@@ -16,6 +16,19 @@ define ['jquery'], (jquery) ->
 	##################
 
 	gridTools =
+		# set all cells to false
+		# NOTE: cell = false won't work as primitives are not stored as references.
+		clean: (grid) ->
+			grid.forEach (column) ->
+				column.forEach (cell,i) ->
+					column[i] = false
+			return grid
+
+		swap: (grid) ->
+			temp = grid.front
+			grid.front = grid.back
+			grid.back = temp
+
 		getEmptyGrid: (width, height) ->
 			#console.log moduleName, "constructing grid"
 
