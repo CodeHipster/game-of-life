@@ -1,6 +1,6 @@
 #TODO: cleanup define includes.
-define ['grid','grid-tools','game-of-life','grid-visualizer','grid-interactor','jquery','timer']
-, (grid,gridTools,GameOfLife,gridVisualizer,gridInteractor,jquery, timer) ->
+define ['grid','game-of-life','grid-visualizer','grid-interactor','timer']
+, (grid, GameOfLife, gridVisualizer, gridInteractor, timer) ->
   moduleName = "game-controller"
   console.log moduleName
 

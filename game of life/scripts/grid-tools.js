@@ -9,29 +9,23 @@ define(['jquery'], function(jquery) {
   };
   gridTools = {
     getEmptyGrid: function(width, height) {
-      var tiles, x, y, _i, _ref, _results;
-      console.log(moduleName, "constructing grid");
-      tiles = [];
-      _results = [];
+      var grid, x, y, _i, _j, _ref, _ref1;
+      grid = [];
       for (x = _i = 0, _ref = width - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; x = 0 <= _ref ? ++_i : --_i) {
-        tiles[x] = [];
-        _results.push((function() {
-          var _j, _ref1, _results1;
-          _results1 = [];
-          for (y = _j = 0, _ref1 = height - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; y = 0 <= _ref1 ? ++_j : --_j) {
-            _results1.push(tiles[x][y] = false);
-          }
-          return _results1;
-        })());
+        grid[x] = [];
+        for (y = _j = 0, _ref1 = height - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; y = 0 <= _ref1 ? ++_j : --_j) {
+          grid[x][y] = false;
+        }
       }
-      return _results;
+      return grid;
     },
 
-    /*return all 8 neighbours.
+    /*return count of alive neighbours.
     		neighbours:
     		[0][1][2]
     		[3][c][4]
     		[5][6][7]
+    		neighbours that fall outside the grid are undefined.
      */
     getNrOfNeighbours: function(grid, x, y) {
       var count, index, n, neighbours, _i, _len, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
@@ -43,26 +37,7 @@ define(['jquery'], function(jquery) {
           count = count + 1;
         }
       }
-      return neighbours;
-    },
-    setNeighbours: function(grid, neighbours, x, y) {
-      var gridNeighbours;
-      if (isEdgeOfGrid(grid, x, y)) {
-        gridNeighbours = getNeighbours(grid, x, y);
-        gridNeighbours.forEach(function(nb, index) {
-          if (nb === void 0) {
-            return neighbours[index] = nb;
-          }
-        });
-      }
-      grid[x - 1][y - 1] = neighbours[0];
-      grid[x][y - 1] = neighbours[1];
-      grid[x + 1][y - 1] = neighbours[2];
-      grid[x - 1][y] = neighbours[3];
-      grid[x + 1][y] = neighbours[4];
-      grid[x - 1][y + 1] = neighbours[5];
-      grid[x][y + 1] = neighbours[6];
-      return grid[x + 1][y + 1] = neighbours[7];
+      return count;
     }
   };
   return gridTools;

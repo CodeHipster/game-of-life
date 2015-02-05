@@ -35,7 +35,7 @@ define ['grid-tools'], (gridTools) ->
 			for column, x in grid # OPTIMIZE decide wether it is more efficient to only look at the live cells and their neighbours then to go through the entire grid.
 				for cell, y in column
 					#console.log moduleName, "logic for x: #{x} y: #{y}"
-					nrNeighbours = getCountLivingNeighbours (gridTools.getNeighbours grid, x, y)
+					nrNeighbours = gridTools.getNrOfNeighbours grid, x, y
 					#console.log moduleName, "live neighbours: #{nrNeighbours}"
 					if grid[x][y] # If cell is alive.
 						# If cell has less then 2 neighbours it does from loneliness.

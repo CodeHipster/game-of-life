@@ -16,24 +16,23 @@ define ['jquery'], (jquery) ->
 	##################
 
 	gridTools =
-		#Constructor for grid class.
-		# x, y are number of tiles.
 		getEmptyGrid: (width, height) ->
-			console.log moduleName, "constructing grid"
+			#console.log moduleName, "constructing grid"
 
-			#The tiles
-			tiles = []
+			# set each cell to be false.
+			grid = []
 			for x in [0..width - 1]
-				tiles[x] = []
+				grid[x] = []
 				for y in [0..height - 1]
-					tiles[x][y] = false
+					grid[x][y] = false
+			return grid
 
-
-		###return all 8 neighbours.
+		###return count of alive neighbours.
 		neighbours:
 		[0][1][2]
 		[3][c][4]
 		[5][6][7]
+		neighbours that fall outside the grid are undefined.
 		###
 		getNrOfNeighbours: (grid, x, y) ->
 			#console.log moduleName, "getNeighbours x:#{x} y:#{y} \n\tgrid:", grid
@@ -50,26 +49,6 @@ define ['jquery'], (jquery) ->
 			count = 0
 			for n, index in neighbours
 				count = count + 1 if n is true
-			return neighbours
-
-		#useless function?
-		setNeighbours: (grid, neighbours, x, y) ->
-			#console.log moduleName, "setNeighbours"
-			#If we are on the edge of the grid we do not want to set the values :)
-			#We can use the javascript array to see if we get undefined values.
-			#Set these undefined values on the original neighbours array.
-			if isEdgeOfGrid grid, x, y
-				gridNeighbours = getNeighbours grid, x, y
-				gridNeighbours.forEach (nb, index) ->
-					neighbours[index] = nb if nb is undefined
-
-			grid[x - 1][y - 1] = neighbours[0]
-			grid[x][y - 1] = neighbours[1]
-			grid[x + 1][y - 1] = neighbours[2]
-			grid[x - 1][y] = neighbours[3]
-			grid[x + 1][y] = neighbours[4]
-			grid[x - 1][y + 1] = neighbours[5]
-			grid[x][y + 1] = neighbours[6]
-			grid[x + 1][y + 1] = neighbours[7]
+			return count
 
 	return gridTools

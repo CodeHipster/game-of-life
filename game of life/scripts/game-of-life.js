@@ -37,7 +37,7 @@ define(['grid-tools'], function(gridTools) {
         column = grid[x];
         for (y = _j = 0, _len1 = column.length; _j < _len1; y = ++_j) {
           cell = column[y];
-          nrNeighbours = getCountLivingNeighbours(gridTools.getNeighbours(grid, x, y));
+          nrNeighbours = gridTools.getNrOfNeighbours(grid, x, y);
           if (grid[x][y]) {
             if (nrNeighbours < 2) {
               newGrid[x][y] = false;

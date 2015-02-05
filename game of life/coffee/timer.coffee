@@ -9,6 +9,7 @@ define [], () ->
     runAtInterval: (ms, callback) ->
       console.log performance.now
       lastFrameTime = 0
+
       # timeStamp is call moment(of callbacks of requestAnimationFrame)
       #   since program start in ms
       # wrapper wraps the callback in a timed function

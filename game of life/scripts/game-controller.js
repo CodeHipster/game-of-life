@@ -1,4 +1,4 @@
-define(['grid', 'grid-tools', 'game-of-life', 'grid-visualizer', 'grid-interactor', 'jquery', 'timer'], function(grid, gridTools, GameOfLife, gridVisualizer, gridInteractor, jquery, timer) {
+define(['grid', 'game-of-life', 'grid-visualizer', 'grid-interactor', 'timer'], function(grid, GameOfLife, gridVisualizer, gridInteractor, timer) {
   var gameController, moduleName;
   moduleName = "game-controller";
   console.log(moduleName);

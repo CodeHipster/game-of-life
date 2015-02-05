@@ -3,6 +3,8 @@
 prerequisists: canvas cannot change, as a listener is attached
                grid cannot change as the tilesize is used to calculate which tile is clicked.
 ###
+
+# todo: draw the tile we are hovering above with a slight red color.
 define ['grid','canvas','grid-visualizer'], (grid,canvas,visualizer) ->
   moduleName = "grid-interactor"
   console.log moduleName

@@ -31,9 +31,8 @@ gulp.task('open-webpage', function(){
 });
 
 gulp.task('clean', function () {
-  return gulp.src(paths.jsFiles)
-    .pipe(vinylPaths(del));
+	return gulp.src(paths.jsFiles)
+  .pipe(vinylPaths(del));
 });
 
-
-gulp.task('default', ['watch-coffee','coffee','open-webpage']);
+gulp.task('default', ['coffee','watch-coffee','open-webpage']);

@@ -4,6 +4,8 @@
 prerequisists: depends on canvas for calculating tileSize
 ###
 
+#TODO: give grid a backbuffer
+
 define ['grid-tools'], (gridTools) ->
   moduleName = "grid"
   console.log moduleName
