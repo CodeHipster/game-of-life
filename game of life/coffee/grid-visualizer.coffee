@@ -50,6 +50,7 @@ define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid
     #console.log moduleName, "canvas relative width is smaller than grid relative width"
     tileSize = canvas.width / grid.grid.length
 
+  console.log tileSize, canvas.width, canvas.height
   visualizer.tileSize = tileSize
 
   return visualizer

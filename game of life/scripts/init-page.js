@@ -1,5 +1,5 @@
 define(['jquery', 'canvas'], function(jquery, canvas) {
-  var initPage, moduleName, reloadScrollBars, unloadScrollBars;
+  var moduleName, reloadScrollBars, unloadScrollBars;
   moduleName = "init-page";
   console.log(moduleName);
   reloadScrollBars = function() {
@@ -10,14 +10,10 @@ define(['jquery', 'canvas'], function(jquery, canvas) {
     document.documentElement.style.overflow = "hidden";
     return document.body.scroll = "no";
   };
-  initPage = {
-    setupPage: function() {
-      console.log(moduleName, "Setting up page.");
-      jquery("body").css("margin", 0);
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      return unloadScrollBars();
-    }
-  };
-  return initPage;
+  console.log(moduleName, "Setting up page.");
+  jquery("body").css("margin", 0);
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  unloadScrollBars();
+  return void 0;
 });

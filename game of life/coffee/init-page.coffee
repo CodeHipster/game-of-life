@@ -10,18 +10,16 @@ define ['jquery','canvas'], (jquery,canvas)->
 		document.documentElement.style.overflow = "hidden";  # firefox, chrome
 		document.body.scroll = "no"; # ie only
 
-	initPage =
-		setupPage: ()->
-			console.log moduleName, "Setting up page."
-			#full screen canvas.
-			# Overwrite the default margin.
-			jquery "body"
-				.css "margin",0
-			# set the canvas width and height.
-			canvas.width = window.innerWidth
-			canvas.height = window.innerHeight
+	console.log moduleName, "Setting up page."
+	#full screen canvas.
+	# Overwrite the default margin.
+	jquery "body"
+		.css "margin",0
+	# set the canvas width and height.
+	canvas.width = window.innerWidth
+	canvas.height = window.innerHeight
 
-			# Remove the scrollbars.
-			unloadScrollBars()
+	# Remove the scrollbars.
+	unloadScrollBars()
 
-	return initPage
+	return undefined

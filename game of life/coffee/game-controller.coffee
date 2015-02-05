@@ -1,9 +1,11 @@
-define ['grid','grid-tools','game-of-life','grid-visualizer','grid-interactor','jquery']
-, (grid,gridTools,GameOfLife,gridVisualizer,gridInteractor,jquery) ->
+#TODO: cleanup define includes.
+define ['grid','grid-tools','game-of-life','grid-visualizer','grid-interactor','jquery','timer']
+, (grid,gridTools,GameOfLife,gridVisualizer,gridInteractor,jquery, stopwatch) ->
   moduleName = "game-controller"
   console.log moduleName
 
   gameController =
+    iterationsPerSecond: 5
     setupAndRun : () ->
       console.log moduleName, "setup and run"
 
@@ -20,10 +22,10 @@ define ['grid','grid-tools','game-of-life','grid-visualizer','grid-interactor','
       console.log moduleName, "starting grid:", grid
 
       lifeloop = () ->
+        if implement stopwatch
         # Run game of life logic once on the grid.
         grid.grid = GameOfLife.doLogic grid.grid
         #console.log moduleName, "grid:", grid.grid
         gridVisualizer.render grid.grid, canvas
-        requestAnimationFrame lifeloop
 
-      requestAnimationFrame lifeloop
+      timer.runAtInterval 200, lifeloop

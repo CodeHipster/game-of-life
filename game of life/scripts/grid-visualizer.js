@@ -39,6 +39,7 @@ define(['grid-tools', 'jquery', 'canvas', 'grid'], function(gridTools, jquery, c
   } else {
     tileSize = canvas.width / grid.grid.length;
   }
+  console.log(tileSize, canvas.width, canvas.height);
   visualizer.tileSize = tileSize;
   return visualizer;
 });
