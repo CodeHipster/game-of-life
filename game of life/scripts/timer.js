@@ -1,15 +1,21 @@
-define(function() {
+define([], function() {
   var moduleName, timer;
   moduleName = "timer";
   console.log(moduleName);
-  return timer = {
+  timer = {
     runAtInterval: function(ms, callback) {
-      var wrapper;
+      var lastFrameTime, wrapper;
       console.log(performance.now);
-      return wrapper = function(timeStamp) {
-        callBack(timeStamp);
+      lastFrameTime = 0;
+      wrapper = function(timeStamp) {
+        if ((timeStamp - lastFrameTime) > ms) {
+          lastFrameTime = timeStamp;
+          callback(timeStamp);
+        }
         return requestAnimationFrame(wrapper);
       };
+      return requestAnimationFrame(wrapper);
     }
   };
+  return timer;
 });

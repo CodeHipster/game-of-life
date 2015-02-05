@@ -11,9 +11,8 @@ var paths = {
 	jsFiles: './game of life/scripts/'
 };
 
-
 // Compile coffee-script.
-gulp.task('coffee', function() {
+gulp.task('coffee', ['clean'], function() {
   gulp.src(paths.coffeeFiles)
   .pipe(plumber())
   .pipe(coffee({bare: true}))
