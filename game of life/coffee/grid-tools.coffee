@@ -35,7 +35,7 @@ define ['jquery'], (jquery) ->
 		[3][c][4]
 		[5][6][7]
 		###
-		getNeighbours: (grid, x, y) ->
+		getNrOfNeighbours: (grid, x, y) ->
 			#console.log moduleName, "getNeighbours x:#{x} y:#{y} \n\tgrid:", grid
 			neighbours = 	[
 											grid[x - 1]?[y - 1],
@@ -47,11 +47,9 @@ define ['jquery'], (jquery) ->
 											grid[x]?[y + 1],
 											grid[x + 1]?[y + 1]
 										]
-			if isEdgeOfGrid grid, x, y
-				#console.log moduleName, "on edge of grid x:#{x}, y:#{y} \n\tchecking for undefined in ", neighbours
-				for n, index in neighbours
-					neighbours[index] = false if n is undefined
-				#console.log moduleName, "neighbours: ", neighbours
+			count = 0
+			for n, index in neighbours
+				count = count + 1 if n is true
 			return neighbours
 
 		#useless function?

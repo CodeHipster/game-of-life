@@ -11,8 +11,9 @@ define [], () ->
       lastFrameTime = 0
       # timeStamp is call moment(of callbacks of requestAnimationFrame)
       #   since program start in ms
+      # wrapper wraps the callback in a timed function
       wrapper = (timeStamp)->
-        if (timeStamp - lastFrameTime) > ms
+        if (timeStamp - lastFrameTime) > ms # OPTIMIZE by calculating the next render time once each frame.
           lastFrameTime = timeStamp
           callback timeStamp
         requestAnimationFrame wrapper

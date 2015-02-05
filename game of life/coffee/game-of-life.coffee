@@ -31,8 +31,8 @@ define ['grid-tools'], (gridTools) ->
 			#console.log moduleName, "doing logic. on grid:", grid
 			# newGrid will contain the new state of the grid.
 			# We don't want to change the grid as that will break the logic.
-			newGrid = gridTools.getEmptyGrid grid.length, grid[0].length
-			for column, x in grid
+			newGrid = gridTools.getEmptyGrid grid.length, grid[0].length #OPTIMIZE by having a backbuffer instead of creating new.
+			for column, x in grid # OPTIMIZE decide wether it is more efficient to only look at the live cells and their neighbours then to go through the entire grid.
 				for cell, y in column
 					#console.log moduleName, "logic for x: #{x} y: #{y}"
 					nrNeighbours = getCountLivingNeighbours (gridTools.getNeighbours grid, x, y)

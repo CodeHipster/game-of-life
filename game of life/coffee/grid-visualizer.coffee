@@ -28,7 +28,7 @@ define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid
         for cell, y in column
           #console.log moduleName, "drawing cell x:#{x}, y:#{y}"
           # draw/'add to path' the bounding box of the cell
-          @context.rect x * @tileSize, y * @tileSize, @tileSize, @tileSize
+          @context.rect x * @tileSize, y * @tileSize, @tileSize, @tileSize 
           if cell # if cell is alive
             @context.fillRect x * @tileSize, y * @tileSize, @tileSize, @tileSize
       #stroke the prepared rectangles on the canvas.
