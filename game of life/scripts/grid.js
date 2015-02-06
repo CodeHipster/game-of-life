@@ -1,6 +1,6 @@
 
 /*
-prerequisists: depends on canvas for calculating tileSize
+prerequisists: depends on canvas for calculating cellSize
  */
 define(['grid-tools', 'lodash'], function(gridTools, _) {
   var grid, moduleName;

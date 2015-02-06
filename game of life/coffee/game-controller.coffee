@@ -21,10 +21,14 @@ define ['grid','game-of-life','grid-visualizer','grid-interactor','timer']
 
       console.log moduleName, "starting grid:", grid.front
 
-      lifeloop = () ->
+      renderloop = () ->
         #console.log moduleName, "grid:", grid.front
         gridVisualizer.render grid.front, canvas
+
+      logicloop = () ->
         # Run game of life logic once on the grid.
         GameOfLife.doLogic grid
 
-      timer.runAtInterval 200, lifeloop
+      timer.runAtInterval 200, logicloop
+
+      timer.runAtInterval 33, renderloop

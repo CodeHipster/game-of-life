@@ -1,12 +1,7 @@
 define(['jquery'], function(jquery) {
-  var gridTools, isEdgeOfGrid, moduleName;
+  var gridTools, moduleName;
   moduleName = "grid-tools";
   console.log(moduleName);
-  isEdgeOfGrid = function(grid, x, y) {
-    if (x <= 1 || x >= grid.length - 2 || y <= 1 || y >= grid[0].length - 2) {
-      return true;
-    }
-  };
   gridTools = {
     clean: function(grid) {
       grid.forEach(function(column) {
@@ -21,6 +16,11 @@ define(['jquery'], function(jquery) {
       temp = grid.front;
       grid.front = grid.back;
       return grid.back = temp;
+    },
+    isWithinGrid: function(grid, x, y) {
+      if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length) {
+        return true;
+      }
     },
     getEmptyGrid: function(width, height) {
       var grid, x, y, _i, _j, _ref, _ref1;

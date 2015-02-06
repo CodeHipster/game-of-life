@@ -3,15 +3,6 @@ define ['jquery'], (jquery) ->
 	console.log moduleName
 
 	##################
-	#helper functions#
-	##################
-
-	#Check if the cell is on the edge of the grid.
-	isEdgeOfGrid = (grid, x, y) ->
-		#Make the neighbours outside of the grid false.
-		true if x <= 1 or x >= grid.length - 2 or y <= 1 or y >= grid[0].length - 2
-
-	##################
 	#gridTools object#
 	##################
 
@@ -28,6 +19,10 @@ define ['jquery'], (jquery) ->
 			temp = grid.front
 			grid.front = grid.back
 			grid.back = temp
+
+		# note that length is 1 higher then the index.
+		isWithinGrid: (grid, x,y) ->
+			true if x >= 0  and x < grid.length and y >= 0 and y < grid[0].length
 
 		getEmptyGrid: (width, height) ->
 			#console.log moduleName, "constructing grid"

@@ -9,8 +9,16 @@ define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid
   console.log moduleName
 
   visualizer =
-    tileSize: null
+    cellSize: null
     context: null
+    hoverOverTile: null
+
+    # calculate which tile(x,y) the pixel x,y refers to
+    getTileFromPixels = (x,y) ->
+      tx = Math.floor(x / cellSize)
+      ty = Math.floor(y / cellSize)
+      return x:tx, y:ty
+
     # render draws the grid on the canvas.
     render: (grid) ->
       #console.log moduleName, canvas
@@ -23,14 +31,14 @@ define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid
       @context.fillStyle = "#ff0000"
       @context.lineWidth = "2"
       @context.beginPath()
-      #console.log moduleName, "tile size: #{tileSize}"
+      #console.log moduleName, "tile size: #{cellSize}"
       for column, x in grid
         for cell, y in column
           #console.log moduleName, "drawing cell x:#{x}, y:#{y}"
           # draw/'add to path' the bounding box of the cell
-          @context.rect x * @tileSize, y * @tileSize, @tileSize, @tileSize 
+          @context.rect x * @cellSize, y * @cellSize, @cellSize, @cellSize
           if cell # if cell is alive
-            @context.fillRect x * @tileSize, y * @tileSize, @tileSize, @tileSize
+            @context.fillRect x * @cellSize, y * @cellSize, @cellSize, @cellSize
       #stroke the prepared rectangles on the canvas.
       @context.stroke()
 
@@ -45,12 +53,12 @@ define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid
   canvasRatio = canvas.width / canvas.height
   if canvasRatio > gridRatio # we want to scale the grid height to match the canvas.height
     #console.log moduleName, "canvas relative width is greater than grid relative width"
-    tileSize = canvas.height / grid.front[0].length
+    cellSize = canvas.height / grid.front[0].length
   else
     #console.log moduleName, "canvas relative width is smaller than grid relative width"
-    tileSize = canvas.width / grid.front.length
+    cellSize = canvas.width / grid.front.length
 
-  console.log tileSize, canvas.width, canvas.height
-  visualizer.tileSize = tileSize
+  console.log cellSize, canvas.width, canvas.height
+  visualizer.cellSize = cellSize
 
   return visualizer

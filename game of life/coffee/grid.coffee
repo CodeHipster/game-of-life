@@ -1,7 +1,7 @@
 #The grid object that is being tossed around :D
 
 ###
-prerequisists: depends on canvas for calculating tileSize
+prerequisists: depends on canvas for calculating cellSize
 ###
 
 #TODO: give grid a backbuffer

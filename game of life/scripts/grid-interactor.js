@@ -1,22 +1,26 @@
 
 /*
 prerequisists: canvas cannot change, as a listener is attached
-               grid cannot change as the tilesize is used to calculate which tile is clicked.
+               grid cannot change as the cellSize is used to calculate which tile is clicked.
  */
-define(['grid', 'canvas', 'grid-visualizer'], function(grid, canvas, visualizer) {
+define(['grid', 'canvas', 'grid-visualizer', 'grid-tools'], function(grid, canvas, visualizer, gridTools) {
   var interactor, moduleName;
   moduleName = "grid-interactor";
   console.log(moduleName);
+
+  /* Interactor object */
   interactor = {
     onClick: function(event) {
-      var tileSize, x, y;
+      var cell;
       console.log(moduleName, "clicked: ", event);
-      tileSize = visualizer.tileSize;
-      x = Math.floor(event.x / tileSize);
-      y = Math.floor(event.y / tileSize);
-      return grid.front[x][y] = !grid.front[x][y];
-    }
+      cell = visualizer.getCellFromPixels(event.x, event.y);
+      if (gridTools.isWithinGrid(grid.front, cell.x, cell.y)) {
+        return grid.front[cell.x][cell.y] = !grid.front[cell.x][cell.y];
+      }
+    },
+    onMouseMove: function(event) {}
   };
   canvas.addEventListener('click', interactor.onClick, false);
+  canvas.addEventListener('mousemove', interactor.onMouseMove, false);
   return interactor;
 });
