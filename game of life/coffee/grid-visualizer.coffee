@@ -1,6 +1,6 @@
 ###
 prerequists:  grid cannot be 0 sized.
-              grid is rectangular.
+        grid is rectangular.
 ###
 
 
@@ -11,21 +11,19 @@ define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid
   visualizer =
     cellSize: null
     context: null
-    hoverOverTile: null
+    hoverOverCell: null
 
     # calculate which tile(x,y) the pixel x,y refers to
-    getTileFromPixels = (x,y) ->
+    getCellFromPixels: (x,y) ->
       tx = Math.floor(x / cellSize)
       ty = Math.floor(y / cellSize)
       return x:tx, y:ty
 
     # render draws the grid on the canvas.
+    #todo rename grid as it is not the grid object....
     render: (grid) ->
-      #console.log moduleName, canvas
-
       # clear the canvas
       @context.clearRect 0, 0, canvas.width, canvas.height
-
       # set draw and fill styles
       @context.strokeStyle = "#000000"
       @context.fillStyle = "#ff0000"
@@ -35,10 +33,18 @@ define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid
       for column, x in grid
         for cell, y in column
           #console.log moduleName, "drawing cell x:#{x}, y:#{y}"
-          # draw/'add to path' the bounding box of the cell
+          # add to draw queue the bounding box of the cell
           @context.rect x * @cellSize, y * @cellSize, @cellSize, @cellSize
           if cell # if cell is alive
             @context.fillRect x * @cellSize, y * @cellSize, @cellSize, @cellSize
+      #draw the hoverOverCell
+      hover = @hoverOverCell
+      if hover and gridTools.isWithinGrid grid, hover.x, hover.y
+        if grid[hover.x][hover.y]
+          @context.fillStyle = "#FFE0E0"
+        else
+          @context.fillStyle = "#D10000"
+        @context.fillRect hover.x * @cellSize, hover.y * @cellSize, @cellSize, @cellSize
       #stroke the prepared rectangles on the canvas.
       @context.stroke()
 

@@ -19,8 +19,9 @@ define ['grid','canvas','grid-visualizer', 'grid-tools'], (grid,canvas,visualize
         grid.front[cell.x][cell.y] = !grid.front[cell.x][cell.y]
 
     onMouseMove: (event) ->
-      # check if tile(x,y) is equal to hoverOverTile
-      # if not set focus to other tile.
+      #NOTE, cell could be outside of the grid.
+      cell = visualizer.getCellFromPixels event.x, event.y
+      visualizer.hoverOverCell = cell
 
   canvas.addEventListener 'click', interactor.onClick, false
   canvas.addEventListener 'mousemove', interactor.onMouseMove, false

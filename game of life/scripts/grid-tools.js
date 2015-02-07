@@ -20,6 +20,8 @@ define(['jquery'], function(jquery) {
     isWithinGrid: function(grid, x, y) {
       if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length) {
         return true;
+      } else {
+        return false;
       }
     },
     getEmptyGrid: function(width, height) {

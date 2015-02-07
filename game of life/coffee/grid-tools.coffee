@@ -21,8 +21,11 @@ define ['jquery'], (jquery) ->
 			grid.back = temp
 
 		# note that length is 1 higher then the index.
-		isWithinGrid: (grid, x,y) ->
-			true if x >= 0  and x < grid.length and y >= 0 and y < grid[0].length
+		isWithinGrid: (grid,x,y) ->
+			if x >= 0 and x < grid.length and y >= 0 and y < grid[0].length
+				return true
+			else
+				return false
 
 		getEmptyGrid: (width, height) ->
 			#console.log moduleName, "constructing grid"

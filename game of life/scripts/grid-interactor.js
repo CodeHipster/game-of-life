@@ -18,7 +18,11 @@ define(['grid', 'canvas', 'grid-visualizer', 'grid-tools'], function(grid, canva
         return grid.front[cell.x][cell.y] = !grid.front[cell.x][cell.y];
       }
     },
-    onMouseMove: function(event) {}
+    onMouseMove: function(event) {
+      var cell;
+      cell = visualizer.getCellFromPixels(event.x, event.y);
+      return visualizer.hoverOverCell = cell;
+    }
   };
   canvas.addEventListener('click', interactor.onClick, false);
   canvas.addEventListener('mousemove', interactor.onMouseMove, false);
