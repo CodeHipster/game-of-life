@@ -3,7 +3,7 @@
 prerequists:  grid cannot be 0 sized.
         grid is rectangular.
  */
-define(['grid-tools', 'jquery', 'canvas', 'grid'], function(gridTools, jquery, canvas, grid) {
+define(['grid-tools', 'jquery', 'jq-canvas', 'grid'], function(gridTools, jquery, jqCanvas, grid) {
   var canvasRatio, cellSize, ctx, gridRatio, moduleName, visualizer;
   moduleName = "grid-visualizer";
   console.log(moduleName);
@@ -49,16 +49,16 @@ define(['grid-tools', 'jquery', 'canvas', 'grid'], function(gridTools, jquery, c
       return this.context.stroke();
     }
   };
-  ctx = canvas.getContext("2d");
+  ctx = jqCanvas[0].getContext("2d");
   visualizer.context = ctx;
   gridRatio = grid.front.length / grid.front[0].length;
-  canvasRatio = canvas.width / canvas.height;
+  canvasRatio = jqCanvas[0].width / jqCanvas[0].height;
   if (canvasRatio > gridRatio) {
-    cellSize = canvas.height / grid.front[0].length;
+    cellSize = jqCanvas[0].height / grid.front[0].length;
   } else {
-    cellSize = canvas.width / grid.front.length;
+    cellSize = jqCanvas[0].width / grid.front.length;
   }
-  console.log(cellSize, canvas.width, canvas.height);
+  console.log(cellSize, jqCanvas[0].width, jqCanvas[0].height);
   visualizer.cellSize = cellSize;
   return visualizer;
 });

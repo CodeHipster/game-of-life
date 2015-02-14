@@ -15,7 +15,7 @@ define ['grid-tools','lodash'], (gridTools, _) ->
     back: null
 
   # default value.
-  grid.front = gridTools.getEmptyGrid 5,5
+  grid.front = gridTools.getEmptyGrid 50,50
   grid.back = _.cloneDeep grid.front
 
   return grid

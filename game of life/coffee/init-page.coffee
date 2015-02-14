@@ -1,4 +1,4 @@
-define ['jquery','canvas'], (jquery,canvas)->
+define ['jquery','jq-canvas'], (jquery,jqCanvas)->
 	moduleName = "init-page"
 	console.log moduleName
 
@@ -15,11 +15,13 @@ define ['jquery','canvas'], (jquery,canvas)->
 	# Overwrite the default margin.
 	jquery "body"
 		.css "margin",0
-	# set the canvas width and height.
-	canvas.width = window.innerWidth
-	canvas.height = window.innerHeight
+
+	# set the canvas width and height
+	#TODO: can't we just use the jquery object for this?
+	jqCanvas[0].width = window.innerWidth
+	jqCanvas[0].height = window.innerHeight - 50
 
 	# Remove the scrollbars.
 	unloadScrollBars()
 
-	return undefined
+	return true

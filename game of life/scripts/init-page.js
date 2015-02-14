@@ -1,4 +1,4 @@
-define(['jquery', 'canvas'], function(jquery, canvas) {
+define(['jquery', 'jq-canvas'], function(jquery, jqCanvas) {
   var moduleName, reloadScrollBars, unloadScrollBars;
   moduleName = "init-page";
   console.log(moduleName);
@@ -12,8 +12,8 @@ define(['jquery', 'canvas'], function(jquery, canvas) {
   };
   console.log(moduleName, "Setting up page.");
   jquery("body").css("margin", 0);
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  jqCanvas[0].width = window.innerWidth;
+  jqCanvas[0].height = window.innerHeight - 50;
   unloadScrollBars();
-  return void 0;
+  return true;
 });

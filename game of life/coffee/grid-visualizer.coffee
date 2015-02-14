@@ -4,7 +4,7 @@ prerequists:  grid cannot be 0 sized.
 ###
 
 
-define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid) ->
+define ['grid-tools','jquery','jq-canvas','grid'], (gridTools, jquery, jqCanvas, grid) ->
   moduleName = "grid-visualizer"
   console.log moduleName
 
@@ -51,20 +51,20 @@ define ['grid-tools','jquery','canvas','grid'], (gridTools, jquery, canvas, grid
   ##INITIALIZATION CODE
 
   # get the 2d drawing context from the canvas.
-  ctx = canvas.getContext "2d"
+  ctx = jqCanvas[0].getContext "2d"
   visualizer.context = ctx
 
   # eventually we want to have it scrollable, but for now just squeeze the grid onto the screen
   gridRatio = grid.front.length / grid.front[0].length
-  canvasRatio = canvas.width / canvas.height
+  canvasRatio = jqCanvas[0].width / jqCanvas[0].height
   if canvasRatio > gridRatio # we want to scale the grid height to match the canvas.height
     #console.log moduleName, "canvas relative width is greater than grid relative width"
-    cellSize = canvas.height / grid.front[0].length
+    cellSize = jqCanvas[0].height / grid.front[0].length
   else
     #console.log moduleName, "canvas relative width is smaller than grid relative width"
-    cellSize = canvas.width / grid.front.length
+    cellSize = jqCanvas[0].width / grid.front.length
 
-  console.log cellSize, canvas.width, canvas.height
+  console.log cellSize, jqCanvas[0].width, jqCanvas[0].height
   visualizer.cellSize = cellSize
 
   return visualizer

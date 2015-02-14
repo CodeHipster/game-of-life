@@ -1,6 +1,6 @@
 
 /*
-Note: using implicit initialization of modules.
+Note: using implicit initialization of modules. (they are initialized when file is loaded.)
 Modules are not classes :)
 TODO: make initialization explicit. Then it is easier to see what is going on.
  */
@@ -12,7 +12,7 @@ require.config({
   }
 });
 
-require(['init-page', 'game-controller'], function(initPage, gameController) {
+require(['init-page', 'game-controller', 'grid-interactor'], function(initPage, gameController, gridInteractor) {
   var moduleName;
   moduleName = "main";
   console.log(moduleName);

@@ -1,9 +1,10 @@
-define(['grid', 'game-of-life', 'grid-visualizer', 'grid-interactor', 'timer'], function(grid, GameOfLife, gridVisualizer, gridInteractor, timer) {
+define(['grid', 'game-of-life', 'grid-visualizer', 'timer'], function(grid, GameOfLife, gridVisualizer, timer) {
   var gameController, moduleName;
   moduleName = "game-controller";
   console.log(moduleName);
-  return gameController = {
+  gameController = {
     iterationsPerSecond: 5,
+    paused: false,
     setupAndRun: function() {
       var logicloop, renderloop;
       console.log(moduleName, "setup and run");
@@ -17,10 +18,14 @@ define(['grid', 'game-of-life', 'grid-visualizer', 'grid-interactor', 'timer'], 
         return gridVisualizer.render(grid.front, canvas);
       };
       logicloop = function() {
-        return GameOfLife.doLogic(grid);
+        if (!gameController.paused) {
+          return GameOfLife.doLogic(grid);
+        }
       };
       timer.runAtInterval(200, logicloop);
       return timer.runAtInterval(33, renderloop);
     }
   };
+  console.log("gamecontroller:", gameController);
+  return gameController;
 });

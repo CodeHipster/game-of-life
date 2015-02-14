@@ -2,9 +2,10 @@ define(['jquery'], function(jquery) {
   var canvas, context, moduleName;
   moduleName = "canvas";
   console.log(moduleName);
-  canvas = document.getElementById("canvas");
-  if (canvas.getContext) {
-    context = canvas.getContext('2d');
+  canvas = jquery("#canvas");
+  console.log(canvas[0]);
+  if (canvas[0].getContext) {
+    context = canvas[0].getContext('2d');
   } else {
     throw new Error("canvas context unavailable");
   }

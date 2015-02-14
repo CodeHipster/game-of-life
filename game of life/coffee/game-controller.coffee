@@ -1,11 +1,12 @@
 #TODO: cleanup define includes.
-define ['grid','game-of-life','grid-visualizer','grid-interactor','timer']
-, (grid, GameOfLife, gridVisualizer, gridInteractor, timer) ->
+define ['grid','game-of-life','grid-visualizer','timer']
+, (grid, GameOfLife, gridVisualizer, timer) ->
   moduleName = "game-controller"
   console.log moduleName
 
   gameController =
     iterationsPerSecond: 5
+    paused: false
     setupAndRun : () ->
       console.log moduleName, "setup and run"
 
@@ -27,8 +28,11 @@ define ['grid','game-of-life','grid-visualizer','grid-interactor','timer']
 
       logicloop = () ->
         # Run game of life logic once on the grid.
-        GameOfLife.doLogic grid
+        GameOfLife.doLogic grid if not gameController.paused
 
       timer.runAtInterval 200, logicloop
 
       timer.runAtInterval 33, renderloop
+
+  console.log "gamecontroller:",gameController
+  return gameController
