@@ -6,7 +6,7 @@ define ['grid','game-of-life','grid-visualizer','timer']
 
   gameController =
     iterationsPerSecond: 5
-    paused: false
+    paused: true
     setupAndRun : () ->
       console.log moduleName, "setup and run"
 

@@ -1,23 +1,24 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Game of life by Thijs</title>
-	</head>
-	<body>
-		<div class="container">
-			<p>
-	      <button type="button" id='pauseBtn' class="default button">pause</button>
-	      <span class="label label-default">Default</span>
-	      <span class="label label-primary">Primary</span>
-	      <span class="label label-success">Success</span>
-	      <span class="label label-info">Info</span>
-	      <span class="label label-warning">Warning</span>
-	      <span class="label label-danger">Danger</span>
-	    </p>
-			<canvas id='canvas'>
-			</canvas>
-		</div> <!-- container-->
-	</body>
-	<script data-main="scripts/main.js" src="lib/require.js"></script>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Game of life by Thijs</title>
+</head>
+
+<body>
+	<div class="container">
+		<p>
+			Add live cells by clicking the grid when the game is paused. 
+			<a href="https://github.com/CodeHipster/game-of-life">Check it out on github</a>
+		</p>
+		<p>
+			<button type="button" id='playPauseBtn' class="default button">play</button>
+		</p>
+		<canvas id='canvas'>
+		</canvas>
+	</div> <!-- container-->
+</body>
+<script data-main="scripts/main.js" src="lib/require.js"></script>
+
 </html>

@@ -27,12 +27,15 @@ define ['grid','jq-canvas','grid-visualizer','grid-tools','game-controller','jqu
       visualizer.hoverOverCell = cell
 
     onPauseClick: (event) ->
-      gameController.paused = !gameController.paused
       console.log "after:", gameController.paused
+      gameController.paused = !gameController.paused
+      console.log(if gameController.paused then "play" else "pause")
+      console.log(jquery(event.target).text())
+      jquery(event.target).text(if gameController.paused then "play" else "pause")
 
   jqCanvas.click interactor.onClick
   jqCanvas.mousemove interactor.onMouseMove
-  jquery "#pauseBtn" #TODO: make an interface, we don't want to use the frontend in here.
+  jquery "#playPauseBtn" #TODO: make an interface, we don't want to use the frontend in here.
   .click interactor.onPauseClick
 
   return interactor
